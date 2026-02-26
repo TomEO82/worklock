@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="100" fill="#0f172a"/>
+  <circle cx="256" cy="240" r="140" fill="none" stroke="#3b82f6" stroke-width="16"/>
+  <line x1="256" y1="240" x2="256" y2="150" stroke="#f1f5f9" stroke-width="12" stroke-linecap="round"/>
+  <line x1="256" y1="240" x2="320" y2="260" stroke="#3b82f6" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="256" cy="240" r="10" fill="#f1f5f9"/>
+  <text x="256" y="430" text-anchor="middle" fill="#3b82f6" font-family="system-ui" font-weight="bold" font-size="64">WL</text>
+</svg>
