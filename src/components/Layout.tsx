@@ -58,10 +58,10 @@ export function Layout({ currentPage, onNavigate, children }: LayoutProps) {
         <h1 className="text-xl font-bold tracking-tight">
           Work<span className="text-[var(--color-accent-blue)]">Lock</span>
         </h1>
-        <span className="text-[10px] text-[var(--color-text-muted)]">v1.5.0</span>
+        <span className="text-[10px] text-[var(--color-text-muted)]">v1.6.0</span>
       </header>
 
-      <main className="flex-1 overflow-y-auto px-4 py-4">{children}</main>
+      <main className="flex-1 overflow-y-auto px-4 py-4 bg-[var(--color-bg-primary)]">{children}</main>
 
       <nav className="flex border-t border-[var(--color-border)] bg-[var(--color-bg-secondary)] pb-[env(safe-area-inset-bottom)]">
         {tabs.map((tab) => {
