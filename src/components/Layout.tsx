@@ -19,7 +19,7 @@ export function Layout({ currentPage, onNavigate, children }: LayoutProps) {
         <h1 className="text-xl font-bold tracking-tight">
           Work<span className="text-[var(--color-accent-blue)]">Lock</span>
         </h1>
-        <span className="text-[10px] text-[var(--color-text-muted)]">v1.1.0</span>
+        <span className="text-[10px] text-[var(--color-text-muted)]">v1.2.0</span>
       </header>
 
       <main className="flex-1 overflow-y-auto px-4 py-4">{children}</main>
