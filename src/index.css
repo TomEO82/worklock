@@ -28,7 +28,6 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: transparent;
-  padding-top: env(safe-area-inset-top);
 }
 
 @keyframes pulse-glow {
