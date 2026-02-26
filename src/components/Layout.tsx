@@ -14,11 +14,12 @@ export function Layout({ currentPage, onNavigate, children }: LayoutProps) {
   ]
 
   return (
-    <div className="flex flex-col h-full">
-      <header className="px-5 pt-3 pb-2 bg-[var(--color-bg-primary)] border-b border-[var(--color-border)]">
+    <div className="flex flex-col" style={{ height: '100dvh' }}>
+      <header className="px-5 pt-3 pb-2 bg-[var(--color-bg-primary)] border-b border-[var(--color-border)] flex items-baseline justify-between">
         <h1 className="text-xl font-bold tracking-tight">
           Work<span className="text-[var(--color-accent-blue)]">Lock</span>
         </h1>
+        <span className="text-[10px] text-[var(--color-text-muted)]">v1.1.0</span>
       </header>
 
       <main className="flex-1 overflow-y-auto px-4 py-4">{children}</main>
