@@ -8,10 +8,11 @@ import { getMonthShifts } from '../utils/time'
 interface ScheduleProps {
   shifts: Shift[]
   onAddShift: (date: string, start: string, end: string) => void
+  onUpdateShift: (id: string, updates: Partial<Pick<Shift, 'plannedStart' | 'plannedEnd' | 'date'>>) => void
   onDeleteShift: (id: string) => void
 }
 
-export function Schedule({ shifts, onAddShift, onDeleteShift }: ScheduleProps) {
+export function Schedule({ shifts, onAddShift, onUpdateShift, onDeleteShift }: ScheduleProps) {
   const [monthDate, setMonthDate] = useState(startOfMonth(new Date()))
   const [selectedDate, setSelectedDate] = useState<string | null>(null)
 
@@ -78,7 +79,13 @@ export function Schedule({ shifts, onAddShift, onDeleteShift }: ScheduleProps) {
         <ShiftForm
           date={selectedDate}
           existingShift={selectedShift}
-          onSave={onAddShift}
+          onSave={(date, start, end) => {
+            if (selectedShift) {
+              onUpdateShift(selectedShift.id, { plannedStart: start, plannedEnd: end, date })
+            } else {
+              onAddShift(date, start, end)
+            }
+          }}
           onDelete={onDeleteShift}
           onClose={() => setSelectedDate(null)}
         />

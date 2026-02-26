@@ -16,6 +16,7 @@ function App() {
     punchOut,
     addPlannedShift,
     deleteShift,
+    updateShift,
   } = useShifts()
 
   return (
@@ -33,6 +34,7 @@ function App() {
         <Schedule
           shifts={shifts}
           onAddShift={addPlannedShift}
+          onUpdateShift={updateShift}
           onDeleteShift={deleteShift}
         />
       )}
