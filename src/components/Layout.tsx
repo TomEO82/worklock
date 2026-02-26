@@ -58,29 +58,31 @@ export function Layout({ currentPage, onNavigate, children }: LayoutProps) {
         <h1 className="text-xl font-bold tracking-tight">
           Work<span className="text-[var(--color-accent-blue)]">Lock</span>
         </h1>
-        <span className="text-[10px] text-[var(--color-text-muted)]">v1.6.0</span>
+        <span className="text-[10px] text-[var(--color-text-muted)]">v1.7.0</span>
       </header>
 
       <main className="flex-1 overflow-y-auto px-4 py-4 bg-[var(--color-bg-primary)]">{children}</main>
 
-      <nav className="flex border-t border-[var(--color-border)] bg-[var(--color-bg-secondary)] pb-[env(safe-area-inset-bottom)]">
-        {tabs.map((tab) => {
-          const Icon = tabIcons[tab.page]
-          return (
-            <button
-              key={tab.page}
-              onClick={() => onNavigate(tab.page)}
-              className={`flex-1 flex flex-col items-center py-3 gap-1 transition-colors ${
-                currentPage === tab.page
-                  ? 'text-[var(--color-accent-blue)]'
-                  : 'text-[var(--color-text-muted)]'
-              }`}
-            >
-              <Icon />
-              <span className="text-[11px] font-medium">{tab.label}</span>
-            </button>
-          )
-        })}
+      <nav className="mt-auto border-t border-[var(--color-border)] bg-[var(--color-bg-secondary)]" style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}>
+        <div className="flex">
+          {tabs.map((tab) => {
+            const Icon = tabIcons[tab.page]
+            return (
+              <button
+                key={tab.page}
+                onClick={() => onNavigate(tab.page)}
+                className={`flex-1 flex flex-col items-center py-1.5 gap-0.5 transition-colors ${
+                  currentPage === tab.page
+                    ? 'text-[var(--color-accent-blue)]'
+                    : 'text-[var(--color-text-muted)]'
+                }`}
+              >
+                <Icon />
+                <span className="text-[10px] font-medium">{tab.label}</span>
+              </button>
+            )
+          })}
+        </div>
       </nav>
     </div>
   )
