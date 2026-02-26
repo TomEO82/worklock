@@ -79,7 +79,7 @@ export function useShifts() {
   }, [])
 
   const updateShift = useCallback(
-    (id: string, updates: Partial<Pick<Shift, 'plannedStart' | 'plannedEnd' | 'date'>>) => {
+    (id: string, updates: Partial<Pick<Shift, 'plannedStart' | 'plannedEnd' | 'date' | 'startTime' | 'endTime'>>) => {
       setState((prev) => ({
         ...prev,
         shifts: prev.shifts.map((s) => (s.id === id ? { ...s, ...updates } : s)),

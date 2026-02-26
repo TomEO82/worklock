@@ -39,7 +39,12 @@ function App() {
         />
       )}
       {page === 'history' && (
-        <History shifts={shifts} monthlyLimitHours={monthlyLimitHours} />
+        <History
+          shifts={shifts}
+          monthlyLimitHours={monthlyLimitHours}
+          onUpdateShift={updateShift}
+          onDeleteShift={deleteShift}
+        />
       )}
     </Layout>
   )

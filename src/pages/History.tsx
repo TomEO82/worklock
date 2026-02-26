@@ -2,16 +2,20 @@ import { useState } from 'react'
 import { addMonths, subMonths, format, startOfMonth } from 'date-fns'
 import type { Shift } from '../types'
 import { ShiftCard } from '../components/ShiftCard'
+import { ShiftEditModal } from '../components/ShiftEditModal'
 import { getMonthShifts, getTotalWorkedSeconds, formatHoursMinutes } from '../utils/time'
 import { useTimer } from '../hooks/useTimer'
 
 interface HistoryProps {
   shifts: Shift[]
   monthlyLimitHours: number
+  onUpdateShift: (id: string, updates: Partial<Pick<Shift, 'plannedStart' | 'plannedEnd' | 'date' | 'startTime' | 'endTime'>>) => void
+  onDeleteShift: (id: string) => void
 }
 
-export function History({ shifts, monthlyLimitHours }: HistoryProps) {
+export function History({ shifts, monthlyLimitHours, onUpdateShift, onDeleteShift }: HistoryProps) {
   const [monthDate, setMonthDate] = useState(startOfMonth(new Date()))
+  const [editingShift, setEditingShift] = useState<Shift | null>(null)
   const hasActive = shifts.some((s) => s.status === 'active')
   const now = useTimer(hasActive)
 
@@ -62,6 +66,8 @@ export function History({ shifts, monthlyLimitHours }: HistoryProps) {
         </p>
       </div>
 
+      <p className="text-xs text-[var(--color-text-muted)] text-center">Tap a shift to edit or delete</p>
+
       {monthShifts.length === 0 ? (
         <div className="text-center py-12">
           <p className="text-[var(--color-text-muted)] text-sm">No shifts recorded yet</p>
@@ -69,9 +75,20 @@ export function History({ shifts, monthlyLimitHours }: HistoryProps) {
       ) : (
         <div className="space-y-2">
           {monthShifts.map((shift) => (
-            <ShiftCard key={shift.id} shift={shift} now={now} />
+            <div key={shift.id} onClick={() => setEditingShift(shift)} className="cursor-pointer active:scale-[0.98] transition-transform">
+              <ShiftCard shift={shift} now={now} />
+            </div>
           ))}
         </div>
+      )}
+
+      {editingShift && (
+        <ShiftEditModal
+          shift={editingShift}
+          onSave={onUpdateShift}
+          onDelete={onDeleteShift}
+          onClose={() => setEditingShift(null)}
+        />
       )}
     </div>
   )
