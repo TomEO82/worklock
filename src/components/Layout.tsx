@@ -54,10 +54,13 @@ export function Layout({ currentPage, onNavigate, children }: LayoutProps) {
 
   return (
     <div className="fixed inset-0 flex flex-col">
-      <header className="px-5 pt-3 pb-2 bg-[var(--color-bg-primary)] border-b border-[var(--color-border)] flex items-baseline justify-between" style={{ paddingTop: 'calc(env(safe-area-inset-top) + 0.75rem)' }}>
-        <h1 className="text-xl font-bold tracking-tight">
-          Work<span className="text-[var(--color-accent-blue)]">Lock</span>
-        </h1>
+      <header className="px-5 pt-3 pb-2 bg-[var(--color-bg-primary)] border-b border-[var(--color-border)] flex items-center justify-between" style={{ paddingTop: 'calc(env(safe-area-inset-top) + 0.75rem)' }}>
+        <div className="flex items-center gap-2">
+          <img src={`${import.meta.env.BASE_URL}icon.svg`} alt="WorkLock" className="w-7 h-7" />
+          <h1 className="text-xl font-bold tracking-tight">
+            Work<span className="text-[var(--color-accent-blue)]">Lock</span>
+          </h1>
+        </div>
         <span className="text-[10px] text-[var(--color-text-muted)]">v1.7.0</span>
       </header>
 
@@ -71,7 +74,7 @@ export function Layout({ currentPage, onNavigate, children }: LayoutProps) {
               <button
                 key={tab.page}
                 onClick={() => onNavigate(tab.page)}
-                className={`flex-1 flex flex-col items-center py-1.5 gap-0.5 transition-colors ${
+                className={`flex-1 flex flex-col items-center py-1 gap-0 transition-colors ${
                   currentPage === tab.page
                     ? 'text-[var(--color-accent-blue)]'
                     : 'text-[var(--color-text-muted)]'

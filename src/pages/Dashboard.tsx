@@ -14,6 +14,7 @@ interface DashboardProps {
   monthlyLimitHours: number
   onPunchIn: () => void
   onPunchOut: () => void
+  onSetMonthlyLimit: (hours: number) => void
 }
 
 export function Dashboard({
@@ -22,6 +23,7 @@ export function Dashboard({
   monthlyLimitHours,
   onPunchIn,
   onPunchOut,
+  onSetMonthlyLimit,
 }: DashboardProps) {
   const now = useTimer(!!activeShift)
   const { showWarningBanner, permissionState, requestPermission } = useNotification(
@@ -64,7 +66,7 @@ export function Dashboard({
 
       <PunchButton isActive={!!activeShift} onPunch={activeShift ? onPunchOut : onPunchIn} />
       <LiveTimer activeShift={activeShift} now={now} />
-      <ProgressBar workedHours={workedSeconds / 3600} limitHours={monthlyLimitHours} />
+      <ProgressBar workedHours={workedSeconds / 3600} limitHours={monthlyLimitHours} onSetLimit={onSetMonthlyLimit} />
       <MonthStats
         workedSeconds={workedSeconds}
         remainingSeconds={remainingSeconds}
