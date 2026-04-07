@@ -66,7 +66,7 @@ export function Layout({ currentPage, onNavigate, children }: LayoutProps) {
 
       <main className="flex-1 overflow-y-auto px-4 py-4 bg-[var(--color-bg-primary)]">{children}</main>
 
-      <nav className="mt-auto border-t border-[var(--color-border)] bg-[var(--color-bg-secondary)]" style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}>
+      <nav className="mt-auto border-t border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
         <div className="flex">
           {tabs.map((tab) => {
             const Icon = tabIcons[tab.page]
