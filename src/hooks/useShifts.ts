@@ -15,6 +15,7 @@ export function useShifts() {
 
   const punchIn = useCallback(() => {
     const now = new Date()
+    now.setSeconds(0, 0)
     const todayStr = format(now, 'yyyy-MM-dd')
     const existing = state.shifts.find(
       (s) => s.date === todayStr && s.status === 'planned'
@@ -45,6 +46,7 @@ export function useShifts() {
 
   const punchOut = useCallback(() => {
     const now = new Date()
+    now.setSeconds(0, 0)
     setState((prev) => ({
       ...prev,
       shifts: prev.shifts.map((s) =>

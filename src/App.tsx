@@ -17,6 +17,7 @@ function App() {
     addPlannedShift,
     deleteShift,
     updateShift,
+    setMonthlyLimit,
   } = useShifts()
 
   return (
@@ -28,6 +29,7 @@ function App() {
           monthlyLimitHours={monthlyLimitHours}
           onPunchIn={punchIn}
           onPunchOut={punchOut}
+          onSetMonthlyLimit={setMonthlyLimit}
         />
       )}
       {page === 'schedule' && (
